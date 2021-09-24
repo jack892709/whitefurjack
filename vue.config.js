@@ -1,3 +1,6 @@
 module.exports = {
-    publicPath: './',
+    // publicPath: './', // relative path
+    publicPath: process.env.NODE_ENV === 'production'
+        ? '/whitefurjack/'
+        : '/',
 };
