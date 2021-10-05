@@ -44,7 +44,7 @@
                                         </svg>
                                     </button>
                                     </div>
-                                    <input id="quantity" type="text" class="myform-control" :value="item.quantity" @change="updateTobuyQuantity">
+                                    <input type="text" class="myform-control" :value="item.quantity" @change="updateTobuyQuantity">
                                     <div class="input-group-append">
                                     <button type="button" class="" @click="addTobuyQuantity(item.id)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
