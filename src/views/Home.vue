@@ -3,7 +3,20 @@
         <div class="mb-5">
             <div class="hero position-relative">
                 <div class="hero-bg">
-                    <img src="../assets/images/dscg1722_cut.jpg" alt="">
+                    <!-- <img src="../assets/images/dscg1722_cut.jpg" alt=""> -->
+                    <picture>
+                        <source media="(max-width: 960px)"
+                                srcset="../assets/images/hero_mobile.jpg" />
+                        <source media="(min-width: 960px)"
+                                srcset="../assets/images/hero_regular.jpg" />
+                        <source media="(min-width: 2000px)"
+                                srcset="../assets/images/hero_4k.webp"
+                                type="image/webp" />
+                        <source media="(min-width: 2000px)"
+                                srcset="../assets/images/hero_4k.jpg"
+                                type="image/jpg" />
+                        <img src="../assets/images/hero_regular.jpg" alt="">
+                    </picture>
                 </div>
                 <div class="hero-textbox">
                     <div class="hero-textbox-container">
