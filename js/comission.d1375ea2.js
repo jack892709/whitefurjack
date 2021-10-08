@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["comission"],{"4dce":function(n,o,c){"use strict";c.r(o);var e=c("7a23"),s={class:"min-vh-100 d-flex"},t=Object(e["h"])("h1",{class:"d-block m-auto"},"Under Counstruction",-1),i=[t];function a(n,o,c,t,a,r){return Object(e["v"])(),Object(e["g"])("div",s,i)}var r={name:"Comission",components:{}};r.render=a;o["default"]=r}}]);
+//# sourceMappingURL=comission.d1375ea2.js.map
