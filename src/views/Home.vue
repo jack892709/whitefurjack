@@ -5,16 +5,20 @@
                 <div class="hero-bg">
                     <!-- <img src="../assets/images/dscg1722_cut.jpg" alt=""> -->
                     <picture>
-                        <source media="(max-width: 960px)"
-                                srcset="../assets/images/hero_mobile.jpg" />
-                        <source media="(min-width: 960px)"
-                                srcset="../assets/images/hero_regular.jpg" />
                         <source media="(min-width: 2000px)"
                                 srcset="../assets/images/hero_4k.webp"
                                 type="image/webp" />
                         <source media="(min-width: 2000px)"
                                 srcset="../assets/images/hero_4k.jpg"
                                 type="image/jpg" />
+                        <source media="(min-width: 960px)"
+                                srcset="../assets/images/hero_regular.webp"
+                                type="image/webp" />
+                        <source media="(min-width: 960px)"
+                                srcset="../assets/images/hero_regular.jpg"
+                                type="image/jpg" />
+                        <source media="(max-width: 960px)"
+                                srcset="../assets/images/hero_mobile.jpg" />
                         <img src="../assets/images/hero_regular.jpg" alt="">
                     </picture>
                 </div>
