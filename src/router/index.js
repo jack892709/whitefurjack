@@ -92,8 +92,8 @@ const routes = [
         component: () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue'),
     },
     {
-        path: '/comission',
-        name: 'Comission',
+        path: '/commission',
+        name: 'Commission',
         component: () => import(/* webpackChunkName: "comission" */ '../views/Comission.vue'),
     },
     {

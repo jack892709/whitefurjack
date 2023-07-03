@@ -113,11 +113,11 @@
                             </div>
                             <div class="nav-mobile-item">
                                 <router-link
-                                    to="/comission"
+                                    to="/commission"
                                     class="fs-sm-adaptive"
                                     @click="toggleMenu"
                                 >
-                                    <span>Comission</span>
+                                    <span>Commission</span>
                                 </router-link>
                             </div>
                             <div class="nav-mobile-item">
@@ -252,9 +252,9 @@
                             </li>
                             <li class="nav-desktop-item">
                                 <router-link
-                                    to="/comission"
+                                    to="/commission"
                                     class="nav-desktop-link"
-                                    ><span>Comission</span></router-link
+                                    ><span>Commission</span></router-link
                                 >
                             </li>
                             <li class="nav-desktop-item">
