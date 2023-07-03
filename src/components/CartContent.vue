@@ -347,10 +347,6 @@ export default {
         const reduceTobuyQuantity = (id) => {
             store.commit('reduceTobuyQuantity', id);
         };
-        const updateProductQuantity = (event) => {
-            console.log('event', event);
-            console.log('event value', event.target.value);
-        };
 
         return {
             tobuys: computed(() => store.getters.getTobuys),
@@ -359,7 +355,6 @@ export default {
             removeTobuy,
             addTobuyQuantity,
             reduceTobuyQuantity,
-            updateProductQuantity,
         };
     },
 };

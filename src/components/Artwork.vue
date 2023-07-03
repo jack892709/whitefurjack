@@ -320,11 +320,6 @@ export default {
     props: ['artworkId', 'artInfo'],
     emits: ['switchPage'],
     setup(props, { emit }) {
-        const checkDatabaseLoaded = () => {
-            console.log('props artInfo: ', props.artInfo);
-        };
-        checkDatabaseLoaded();
-
         // Scroll Behavior
         const windowWidth = ref(window.innerWidth);
         if (windowWidth.value >= 992) document.body.classList.add('overflow-hidden');
@@ -378,7 +373,6 @@ export default {
 
         // Control
         const scrollToWork = () => {
-            console.log('scroll to top');
             const workElement = document.getElementById('work');
             workElement.scrollIntoView(true);
         };

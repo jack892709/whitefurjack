@@ -1,7 +1,4 @@
 <template>
-    <!-- <div>
-        <h2 @click="testLog">This is an sketchbooks page</h2>
-    </div> -->
     <div class="container-fluid">
         <div class="page-content pt-md-5">
             <h2 class="headline text-uppercase text-center fw-light pt-5 mt-4 mt-md-5">Sketchbooks</h2>
@@ -1115,11 +1112,6 @@ export default {
         const isShowMotorcycle = computed(() => (route.path === '/sketchbooks/motorcycle'));
         const isShowUrban = computed(() => (route.path === '/sketchbooks/urban'));
 
-        const testLog = () => {
-            console.log('route ', route);
-            console.log('route path ', route.path);
-        };
-
         return {
             isShowAllLink,
             isShowOutdoors,
@@ -1127,7 +1119,6 @@ export default {
             isShowPortrait,
             isShowMotorcycle,
             isShowUrban,
-            testLog,
         };
     },
 };

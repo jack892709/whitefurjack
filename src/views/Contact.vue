@@ -1,7 +1,4 @@
 <template>
-    <!-- <div class="contact">
-        <h1>This is an contact page</h1>
-    </div> -->
     <div class="page">
         <div class="page-content pt-md-5">
             <div class="info-layout">
@@ -175,8 +172,6 @@ export default {
             const isValid = Boolean(this.fields.name) && Boolean(this.fields.email) && Boolean(this.fields.message);
             if (!this.fields.name) this.errorMsg.name = 'This field should not be blank.';
             else this.errorMsg.name = '';
-            console.log(this.fields.name);
-            console.log(this.errorMsg.name);
             if (!this.fields.email) this.errorMsg.email = 'This field should not be blank.';
             else if (!this.isEmailValid) this.errorMsg.email = 'This email address is not valid.';
             else this.errorMsg.email = '';
@@ -188,7 +183,6 @@ export default {
             let body = `${replaceWithLinebreak(this.fields.message)}<br/><br/><br/>`; // %0A is newline
             body += `From：${this.fields.name}<br/>`;
             body += `Email：${this.fields.email}<br/>`;
-            console.log(body);
 
             if (this.checkValidation()) {
                 this.$loadScript('https://smtpjs.com/v3/smtp.js')
@@ -200,7 +194,7 @@ export default {
                             From: this.fields.email,
                             Subject: "A visitor from Whitefurjack's website has something to say",
                             Body: body,
-                        }).then((msg) => {
+                        }).then(() => {
                             Swal.fire({
                                 // position: 'top-end',
                                 icon: 'success',
@@ -208,7 +202,6 @@ export default {
                                 showConfirmButton: false,
                                 timer: 1500,
                             });
-                            console.log(msg);
                         });
                         this.clearFields();
                     })
@@ -220,7 +213,6 @@ export default {
                             text: 'Something went wrong!',
                             confirmButtonColor: '#2f2f2f',
                         });
-                        console.log('failed');
                     });
             }
         },

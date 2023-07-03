@@ -431,7 +431,6 @@ export default {
         // CartContent,
     },
     setup(props) {
-        console.log('props:', props.productAlias);
         const isLoaded = ref(false);
 
         const productInfo = ref({

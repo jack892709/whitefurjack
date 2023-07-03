@@ -472,7 +472,6 @@ export default {
     },
     setup(props, { emit }) {
         const isActive = computed(() => props.isCartActive);
-        console.log('get prop:', props.isCartActive);
         const closeCart = () => {
             emit('closeCart');
         };
@@ -488,10 +487,8 @@ export default {
         const reduceTobuyQuantity = (id) => {
             store.commit('reduceTobuyQuantity', id);
         };
-        const updateTobuyQuantity = (event) => {
+        const updateTobuyQuantity = () => {
             // Not in use
-            console.log('event', event);
-            console.log('event value', event.target.value);
         };
         const tobuys = computed(() => store.getters.getTobuys);
 

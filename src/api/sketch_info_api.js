@@ -102,7 +102,6 @@ function testSomething() {
     // range
     let dataRange = '';
     const targetCol = columnToLetter(findInRow(1, searchby));
-    console.log('targetCol', targetCol);
     switch (searchby) {
         case 'id': {
         }
@@ -112,7 +111,6 @@ function testSomething() {
             break;
         }
         default: {
-            console.log('search undefined');
             dataRange = `!A1:${lastCol}${sheet.getLastRow()}`;
             break;
         }
@@ -125,8 +123,6 @@ function testSomething() {
         data.push(header[0]);
         data.push(info[0]);
     } else data = info;
-
-    console.log(data);
 }
 
 function getDataAll(sheetName) {
@@ -135,7 +131,6 @@ function getDataAll(sheetName) {
         .getSheetByName(sheetName)
         .getDataRange()
         .getValues();
-    console.log(data);
     return data;
 }
 
@@ -174,7 +169,6 @@ function findInRow(row, data) {
     const rowRange = spreadsheet.getRange(`A${row}:${lastCol}${row}`);
 
     const values = rowRange.getValues();
-    console.log(values);
     let column = 0;
 
     while (values[0][column] && values[0][column] !== data) {

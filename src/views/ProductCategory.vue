@@ -814,13 +814,11 @@ export default {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log('product data: ', data);
                     storeInProductList(data);
                     return data;
                 });
             return result;
         }
-        // fetchProducts();
 
         async function fetchProductsByCategory(category) {
             // console.log('fetching data by category...');
@@ -832,7 +830,6 @@ export default {
             )
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log('product data: ', data);
                     storeInProductList(data);
                     return data;
                 });
@@ -844,17 +841,8 @@ export default {
             fetchProducts();
         }
 
-        // const isLoaded = false;
-        // console.log('category isLoaded', isLoaded);
-        // if (!isLoaded) {
-        //     console.log('current:', currentCategory.value);
-        //     fetchProductsByCategory(currentCategory.value).then(() => { isLoaded = true; });
-        // }
-
-        // console.log('props:', props.productCategory);
         const currentCategory = computed(() => props.productCategory);
         watch(currentCategory, () => {
-            // console.log('category changed:', currentCategory.value);
             if (currentCategory.value) {
                 fetchProductsByCategory(currentCategory.value);
             } else {

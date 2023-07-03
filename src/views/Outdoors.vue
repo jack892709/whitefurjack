@@ -174,10 +174,7 @@ async function initDB() {
 async function storeData(data, db) {
     const tx = db.transaction('outdoors', 'readwrite'); // 參數的部分單純取資料可用`readonly`
 
-    const asyncList = (dataToStore) => dataToStore.map((item) => {
-        console.log('');
-        return tx.store.add(item);
-    });
+    const asyncList = (dataToStore) => dataToStore.map((item) => tx.store.add(item));
 
     await Promise.all([...asyncList(data), tx.done]); // 最後一步 call done method 來結束這次的transaction
 }
@@ -229,7 +226,6 @@ export default {
                 .then((response) => response.json())
                 .then((json) => makeObjectByFirstRow(json))
                 .then((data) => {
-                    console.log('more', data);
                     storeInArtList(data);
                     return data;
                 });
@@ -241,7 +237,6 @@ export default {
         const checkAllLoaded = (data) => {
             for (let i = 0; i < data.length; i += 1) {
                 if (!data[i].id) isAllLoaded.value = true;
-                console.log('isAllLoaded', isAllLoaded.value);
             }
         };
         const loadMoreFactory = (startAt, numPerRequest) => {
@@ -251,7 +246,6 @@ export default {
             return async () => {
                 let result;
                 if (!isLoading) {
-                    console.log('start:', start);
                     isLoading = true;
                     result = await fetchDetailedArtInfoByQuantity(start, quantity)
                         .then((data) => {
@@ -262,7 +256,6 @@ export default {
 
                     isLoading = false;
                     start += quantity;
-                    console.log('result:', result);
                 }
                 return result;
             };
@@ -270,16 +263,13 @@ export default {
         let loadMore = loadMoreFactory(1, 12);
 
         (async function initData() {
-            console.log('first load');
             const { dbPromise, idbOutdoors } = await initDB();
             const keys = await idbOutdoors.keys(); // 取出key值來確認 db 是否有cache資料了
             if (!keys.length) {
-                console.log('Load from api');
                 const jsonData = await loadMore(); // api 取資料回來
                 await storeData(jsonData, dbPromise); // 存進indexedDB
                 // keys = await idbOutdoors.keys();
             } else { // Load from IndexedDB
-                console.log('Load from IndexedDB');
                 for (let i = 0; i < keys.length; i += 1) {
                     idbOutdoors.get(keys[i])
                         .then((item) => {
@@ -292,7 +282,6 @@ export default {
         }());
 
         async function storeMore(jsonData) {
-            console.log('StoreMore');
             // eslint-disable-next-line no-unused-vars
             const { dbPromise, idbOutdoors } = await initDB();
 
@@ -315,11 +304,9 @@ export default {
             }
         };
         onMounted(() => {
-            console.log('mounted!');
             window.addEventListener('scroll', handleScroll);
         });
         onUnmounted(() => {
-            console.log('unmounted!');
             window.removeEventListener('scroll', handleScroll);
         });
         watch(isAllLoaded, () => {
@@ -363,7 +350,7 @@ export default {
                 break;
             }
             default: {
-                console.log('gogogo!!!');
+                break;
             }
             }
         };

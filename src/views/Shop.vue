@@ -38,8 +38,5 @@ export default {
     components: {
         ShopNav,
     },
-    setup() {
-        console.log('shop loaded');
-    },
 };
 </script>
