@@ -48,6 +48,7 @@ module.exports = {
     'one-var': 'off',
     'no-void': 'off',
     'multiline-ternary': 'off',
+    'max-len': "off",
 
     'import/first': 'off',
     'import/named': 'error',
