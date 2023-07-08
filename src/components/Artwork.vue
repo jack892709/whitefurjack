@@ -485,6 +485,7 @@ export default {
     // Data
     const isLoaded = ref(false);
     async function fetchDetailedArtInfoById(id) {
+      isLoaded.value = false;
       const url = `https://script.google.com/macros/s/AKfycbzRA6_7hlubMH1wOlZ3oLCRJB6xI9n0g5ZQMv5VYrwe6GL-CE7w3HbMRfWHzkywV8XVJQ/exec?type=detail&searchby=id&value=${id}`;
       const info = await fetch(url, {
         headers: {
