@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["portrait"],{"8c6a":function(t,e,n){"use strict";n.r(e);var r=n("7a23"),a={class:"portrait d-flex justify-content-center"},c=Object(r["h"])("h1",null,"WIP",-1),i=[c];function o(t,e,n,c,o,p){return Object(r["v"])(),Object(r["g"])("div",a,i)}var p={name:"portrait"};p.render=o;e["default"]=p}}]);
+//# sourceMappingURL=portrait.f750398f.js.map
