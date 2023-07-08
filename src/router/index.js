@@ -32,6 +32,7 @@ const routes = [
           children:
             [
               {
+                name: 'artwork',
                 path: ':artworkId',
                 component: () => import(/* webpackChunkName: "artwork" */ '../components/Artwork.vue'),
                 props: true,

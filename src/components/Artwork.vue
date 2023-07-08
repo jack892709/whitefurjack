@@ -3,45 +3,86 @@
         <h1>This is an artwork page {{artworkId}}</h1>
         <p>testing prop currentArtData {{artInfo}}</p>
     </div> -->
-  <div class="work" id="work" @click="closeModal">
+  <div
+    class="work"
+    id="work"
+    @click="closeModal"
+  >
     <div class="slidework">
-      <div class="work-inner" @click.stop="doNothing">
+      <div
+        class="work-inner"
+        @click.stop="doNothing"
+      >
+        <div
+          v-if="isLoaded"
+          class="work-details"
+        >
+          <img
+            :src="artData.img_url"
+            alt=""
+          >
+          <div class="work-info sided-content-layout">
+            <div class="left-side-content">
+              <div class="text-content">
+                <h1 class="title">
+                  {{artData.title}}
+                </h1>
+                <span class="subtitle">
+                  {{artData.year}}
+                </span>
+              </div>
+            </div>
+            <div class="right-side-content">
+              <div class="text-content">
+                <div class="rich-content">
+                  <p
+                    v-for="line,index in artData.description"
+                    :key="artData.id + '_p_' + index"
+                  >
+                    {{line}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="items">
+            <div
+              class="item"
+              v-for="image,index in artData.other"
+              :key="artData.id+'_'+index"
+              v-show="image"
+            >
+              <div class="image">
+                <a href="">
+                  <img
+                    :src="image"
+                    alt=""
+                  >
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          v-else
+          class="loading"
+        >
+          <div class="d-flex justify-content-center align-items-center h-100">
+            <!-- <span>Loading...</span> -->
+            <div
+              class="spinner-border"
+              role="status"
+            >
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+        <!-- show detail from props -->
         <!-- <div class="work-details">
-                    <img :src="artData.img_url" alt="">
-                    <div class="work-info sided-content-layout">
-                        <div class="left-side-content">
-                            <div class="text-content">
-                                <h1 class="title">
-                                    {{artData.title}}
-                                </h1>
-                                <span class="subtitle">
-                                    {{artData.year}}
-                                </span>
-                            </div>
-                        </div>
-                        <div class="right-side-content">
-                            <div class="text-content">
-                                <div class="rich-content">
-                                    <p v-for="line,index in artData.description" :key="artData.id + '_p_' + index">
-                                        {{line}}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="items">
-                        <div class="item" v-for="image,index in artData.other" :key="artData.id+'_'+index" v-show="image">
-                            <div class="image">
-                                <a href="">
-                                    <img :src="image" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-        <!-- props -->
-        <div class="work-details">
-          <img :src="artInfo.img_url" alt="" />
+          <img
+            :src="artInfo.img_url"
+            alt=""
+          />
           <div class="work-info sided-content-layout">
             <div class="left-side-content">
               <div class="text-content">
@@ -75,15 +116,21 @@
             >
               <div class="image">
                 <a href="">
-                  <img :src="image" alt="" />
+                  <img
+                    :src="image"
+                    alt=""
+                  />
                 </a>
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="slidecontrol">
-        <div class="work-switch work-close" @click.stop="closeModal">
+        <div
+          class="work-switch work-close"
+          @click.stop="closeModal"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -96,7 +143,10 @@
             />
           </svg>
         </div>
-        <div class="work-switch work-left" @click.stop="lastArtwork">
+        <div
+          class="work-switch work-left"
+          @click.stop="lastArtwork"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -109,7 +159,10 @@
             />
           </svg>
         </div>
-        <div class="work-switch work-right" @click.stop="nextArtwork">
+        <div
+          class="work-switch work-right"
+          @click.stop="nextArtwork"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -125,7 +178,10 @@
       </div>
       <div class="switchcontrol d-flex d-lg-none my-5 justify-content-center">
         <div class="switch-btn">
-          <div class="switch-icon" @click.stop="lastArtwork">
+          <div
+            class="switch-icon"
+            @click.stop="lastArtwork"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -140,7 +196,10 @@
           </div>
         </div>
         <div class="switch-btn">
-          <div class="switch-icon" @click.stop="closeModal">
+          <div
+            class="switch-icon"
+            @click.stop="closeModal"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -154,7 +213,10 @@
           </div>
         </div>
         <div class="switch-btn">
-          <div class="switch-icon" @click.stop="nextArtwork">
+          <div
+            class="switch-icon"
+            @click.stop="nextArtwork"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -267,6 +329,9 @@
     }
   }
 }
+.loading {
+  height: calc(100vh - 275px);
+}
 @media (max-width: 767px) {
   .sided-content-layout {
     padding-left: 8px;
@@ -370,6 +435,23 @@ const separateParagraph = (paragraph) => {
   return lines;
 };
 
+function makeObjectByFirstRow(multiArr) {
+  const obj = [];
+  const headers = multiArr.shift();
+  for (let i = 0; i < multiArr.length; i += 1) {
+    obj[i] = {};
+    for (let j = 0; j < headers.length; j += 1) {
+      if (headers[j]) {
+        obj[i][headers[j]] = multiArr[i][j];
+      } else {
+        if (!obj[i].other) obj[i].other = [];
+        obj[i].other.push(multiArr[i][j]);
+      }
+    }
+  }
+  return obj;
+}
+
 export default {
   name: 'Artwork',
   props: ['artworkId', 'artInfo'],
@@ -401,33 +483,35 @@ export default {
     );
 
     // Data
-    // async function fetchDetailedArtInfoById(id) {
-    //     const url = `https://script.google.com/macros/s/AKfycbzRA6_7hlubMH1wOlZ3oLCRJB6xI9n0g5ZQMv5VYrwe6GL-CE7w3HbMRfWHzkywV8XVJQ/exec?type=detail&searchby=id&value=${id}`;
-    //     const info = await fetch(url, {
-    //         headers: {
-    //             'Content-Type': 'text/plain',
-    //         },
-    //     })
-    //         .then((response) => response.json())
-    //         .then((json) => makeObjectByFirstRow(json));
-    //     return info;
-    // }
-    // const artData = ref({});
-    // const freshPage = () => {
-    //     fetchDetailedArtInfoById(props.artworkId)
-    //         .then((data) => {
-    //             [artData.value] = data;
-    //             artData.value.description = separateParagraph(artData.value.description);
-    //             // console.log('artData value', artData.value);
-    //         });
-    // };
-    // freshPage();
-    // watch(
-    //     () => props.artworkId,
-    //     () => {
-    //         freshPage();
-    //     },
-    // );
+    const isLoaded = ref(false);
+    async function fetchDetailedArtInfoById(id) {
+      const url = `https://script.google.com/macros/s/AKfycbzRA6_7hlubMH1wOlZ3oLCRJB6xI9n0g5ZQMv5VYrwe6GL-CE7w3HbMRfWHzkywV8XVJQ/exec?type=detail&searchby=id&value=${id}`;
+      const info = await fetch(url, {
+        headers: {
+          'Content-Type': 'text/plain',
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => makeObjectByFirstRow(json));
+      isLoaded.value = true;
+      return info;
+    }
+    const artData = ref({});
+    const freshPage = () => {
+      fetchDetailedArtInfoById(props.artworkId)
+        .then((data) => {
+          [artData.value] = data;
+          artData.value.description = separateParagraph(artData.value.description);
+          // console.log('artData value', artData.value);
+        });
+    };
+    freshPage();
+    watch(
+      () => props.artworkId,
+      () => {
+        freshPage();
+      },
+    );
 
     // Data
     const artDescription = computed(() => separateParagraph(props.artInfo.description));
@@ -440,7 +524,7 @@ export default {
     const closeModal = () => {
       emit('switchPage', 'close');
     };
-    const doNothing = () => {};
+    const doNothing = () => { };
     const lastArtwork = () => {
       scrollToWork();
       emit('switchPage', 'last');
@@ -456,7 +540,8 @@ export default {
     });
 
     return {
-      // artData,
+      isLoaded,
+      artData,
       artDescription,
 
       closeModal,

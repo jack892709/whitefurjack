@@ -3,114 +3,43 @@
     class="container-fluid page"
     :class="{ 'd-none d-lg-block': $route.params.artworkId }"
   >
-    <div class="row gx-2" id="outdoors-container">
-      <div
-        class="col-md-6 col-lg-4 col-xxl-3 pb-1 image-box"
-        v-for="item in artList"
-        :key="item.id"
+    <div
+      class="row gx-2"
+      id="outdoors-container"
+    >
+      <ImageCard
+        clickable
+        class="col-md-6 col-lg-4 col-xxl-3 pb-1"
+        v-for="(item, itemIndex) in artList"
+        :key="itemIndex"
+        :info="item"
+        @image-click="goToPage(item.id)"
       >
-        <router-link :to="`/sketchbooks/outdoors/${item.id}`" class="d-block">
-          <div class="image-square">
-            <picture>
-              <img :src="item.img_url" alt="" />
-            </picture>
-            <div class="shade">#{{ item.title }}</div>
-          </div>
-          <div class="details">
-            <div class="title">{{ item.title }}, {{ item.year }}</div>
-            <div class="tags">{{ item.tags }}</div>
-          </div>
-        </router-link>
-      </div>
+      </ImageCard>
     </div>
   </div>
-  <!-- <div id="art">
-        <h1>UserID: {{ $route.params.artworkId }}</h1>
-        <button @click="fetchDetailedArtInfoByQuantity(1, 3)">
-            FETCH MORE
-        </button>
-    </div> -->
-  <router-view :artInfo="currentArtData" @switchPage="switchPage" />
+  <router-view
+    :artInfo="currentArtData"
+    @switchPage="switchPage"
+  />
 </template>
 
 <style lang="scss" scoped>
-// a {
-//     text-decoration: none;
-// }
 .page {
   padding-left: 5px;
   padding-right: 5px;
 
   min-height: calc(100vh - 200px);
 }
-.image-box {
-  .image-square {
-    width: 100%;
-    padding-top: 100%; /* 1:1 Aspect Ratio */
-    position: relative;
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .shade {
-      display: none;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      color: #fff;
-      background-color: #00000085;
-      font-size: 1.5rem;
-      z-index: 1;
-    }
-    &:hover {
-      .shade {
-        display: flex;
-      }
-    }
-  }
-  a {
-    text-decoration: none;
-  }
-}
-.details {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  .title {
-    display: inline-block;
-    color: #2f2f2f;
-
-    width: 60%;
-    overflow: hidden;
-    font-size: 0.7rem;
-  }
-  .tags {
-    color: rgba(0, 0, 0, 0.5);
-
-    display: inline-block;
-    width: 38%;
-    text-align: right;
-    overflow: hidden;
-    font-size: 0.6rem;
-  }
-}
 </style>
 
 <script>
+import { openDB } from 'idb';
 import {
   onMounted, onUnmounted, ref, computed, watch,
 } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { openDB } from 'idb';
+import ImageCard from '../components/ImageCard.vue';
 
 function makeObjectByFirstRow(multiArr) {
   const obj = [];
@@ -176,17 +105,19 @@ async function storeData(data, db) {
 
 export default {
   name: 'Outdoors',
-  components: {},
+  components: {
+    ImageCard,
+  },
   setup() {
     // Fetch Data //
     const artList = ref([]);
-    const storeInArtList = (data) => {
+    function storeInArtList(data) {
       for (let i = 0; i < data.length; i += 1) {
         if (data[i].id) artList.value.push(data[i]);
         // artList.value.push(data[i]);
       }
-    };
-    const removeBlankData = (arr) => {
+    }
+    function removeBlankData(arr) {
       for (let i = 0; i < arr.length; i += 1) {
         if (!arr[i].id) {
           arr.splice(i, 1);
@@ -194,7 +125,7 @@ export default {
         }
       }
       return arr;
-    };
+    }
     // getByQuantity 20210825
     const requestUrl = 'https://script.google.com/macros/s/AKfycbwJCgUlhtSzM9z4srQb9bH53UjwycLWd1IRAAIsAmtFgzw9qcZ2hMeVr-8de--Pcd5htQ/exec';
     // async function fetchArtInfo() {
@@ -285,7 +216,7 @@ export default {
       // console.log(keys);
     }
 
-    const handleScroll = () => {
+    function handleScroll() {
       if (window.scrollY + window.screen.height >= document.body.scrollHeight) {
         // loadMore();
 
@@ -293,7 +224,7 @@ export default {
           if (data) storeMore(data);
         });
       }
-    };
+    }
     onMounted(() => {
       window.addEventListener('scroll', handleScroll);
     });
@@ -308,20 +239,26 @@ export default {
     const route = useRoute();
     const artworkId = computed(() => route.params.artworkId);
     const router = useRouter();
-    const currentPageIndex = computed(() => artList.value
-      .findIndex((item) => item.id === parseInt(artworkId.value, 10)));
-    const currentArtData = computed(() => artList.value[currentPageIndex.value]);
-    const toNextPage = () => {
+    const currentPageIndex = computed(() => artList.value.findIndex(
+      (item) => item.id === parseInt(artworkId.value, 10),
+    ));
+    const currentArtData = computed(
+      () => artList.value[currentPageIndex.value],
+    );
+    function goToPage(id) {
+      router.push({ name: 'artwork', params: { artworkId: id } });
+    }
+    function toNextPage() {
       let nextPageIndex = currentPageIndex.value + 1;
       nextPageIndex = nextPageIndex < artList.value.length ? nextPageIndex : 0;
       router.push(`/sketchbooks/outdoors/${artList.value[nextPageIndex].id}`);
-    };
-    const toLastPage = () => {
+    }
+    function toLastPage() {
       let lastPageIndex = currentPageIndex.value - 1;
       lastPageIndex = lastPageIndex >= 0 ? lastPageIndex : artList.value.length - 1;
       router.push(`/sketchbooks/outdoors/${artList.value[lastPageIndex].id}`);
-    };
-    const switchPage = (page) => {
+    }
+    function switchPage(page) {
       switch (page) {
         case 'close': {
           router.push('/sketchbooks/outdoors');
@@ -339,7 +276,7 @@ export default {
           break;
         }
       }
-    };
+    }
 
     return {
       artList,
@@ -347,6 +284,7 @@ export default {
       currentArtData,
       // testingData,
 
+      goToPage,
       switchPage,
       fetchDetailedArtInfoByQuantity,
     };
