@@ -1,23 +1,26 @@
 <template>
   <div class="container-fluid">
     <div class="page-content pt-md-5">
-      <h2
-        class="headline text-uppercase text-center fw-light pt-5 mt-4 mt-md-5"
-      >
+      <h2 class="headline text-uppercase text-center fw-light pt-5 mt-4 mt-md-5">
         Sketchbooks
       </h2>
       <div class="">
         <ul class="sketchbooks flex-column flex-md-row mb-5">
-          <li class="sketchbook p-2" v-show="isShowAllLink || isShowOutdoors">
-            <router-link to="/sketchbooks/outdoors" class="d-inline-block p-3">
+          <li
+            class="sketchbook p-2"
+            v-show="isShowAllLink || isShowOutdoors"
+          >
+            <router-link
+              to="/sketchbooks/outdoors"
+              class="d-inline-block p-3"
+            >
               <!-- <img src="../assets/icons/mountain.svg"> -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
                 fill="currentColor"
               >
-                <path
-                  d="M 300.60,150.30
+                <path d="M 300.60,150.30
                     C 296.30,154.80 290.50,165.90 278.80,192.00
                     265.20,222.40 244.00,262.20 230.60,282.90
                     228.20,286.50 224.50,292.40 222.30,296.00
@@ -134,22 +137,26 @@
                     214.10,410.10 190.10,409.80 190.10,409.80
                     169.20,409.50 166.10,409.30 166.60,408.00
                     167.60,405.30 188.20,372.00 188.90,372.00
-                    189.20,372.00 190.90,374.10 192.70,376.80 Z"
-                />
+                    189.20,372.00 190.90,374.10 192.70,376.80 Z" />
               </svg>
               <h3 class="book-title">Outdoors</h3>
             </router-link>
           </li>
-          <li class="sketchbook p-2" v-show="isShowAllLink || isShowCafe">
-            <router-link to="/sketchbooks/cafe" class="d-inline-block p-3">
+          <li
+            class="sketchbook p-2"
+            v-show="isShowAllLink || isShowCafe"
+          >
+            <router-link
+              to="/sketchbooks/cafe"
+              class="d-inline-block p-3"
+            >
               <!-- <img src="../assets/icons/coffee.svg" alt=""> -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
                 viewBox="0 0 512 512"
               >
-                <path
-                  d="M 294.30,409.50
+                <path d="M 294.30,409.50
                 C 273.30,419.40 257.70,422.40 222.10,423.60
                     211.30,423.90 201.00,424.50 199.10,424.90
                     194.90,425.70 193.00,428.20 194.60,430.70
@@ -259,22 +266,26 @@
                     172.80,391.30 88.00,392.90 88.00,391.10
                     88.00,390.50 88.60,389.90 89.30,389.90
                     93.40,389.50 95.20,389.10 101.50,387.70
-                    119.90,383.50 149.00,382.10 176.00,384.00 Z"
-                />
+                    119.90,383.50 149.00,382.10 176.00,384.00 Z" />
               </svg>
               <h3 class="book-title">Café</h3>
             </router-link>
           </li>
-          <li class="sketchbook p-2" v-show="isShowAllLink || isShowPortrait">
-            <router-link to="/sketchbooks/portrait" class="d-inline-block p-3">
+          <li
+            class="sketchbook p-2"
+            v-show="isShowAllLink || isShowPortrait"
+          >
+            <router-link
+              to="/sketchbooks/portrait"
+              class="d-inline-block p-3"
+            >
               <!-- <img src="../assets/icons/portrait.svg" alt=""> -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
                 viewBox="0 0 512 512"
               >
-                <path
-                  d="M 252.80,78.00
+                <path d="M 252.80,78.00
                                     C 247.00,79.70 233.50,89.20 222.80,98.90
                                     217.40,103.90 180.30,144.80 178.70,147.60
                                     177.70,149.40 179.60,153.00 181.70,153.00
@@ -506,13 +517,15 @@
                                     330.10,265.20 325.00,260.70 322.00,255.30
                                     320.40,252.20 319.40,249.40 319.90,249.10
                                     320.40,248.80 323.70,248.70 327.30,249.00
-                                    332.90,249.40 334.70,250.10 340.40,254.00 Z"
-                />
+                                    332.90,249.40 334.70,250.10 340.40,254.00 Z" />
               </svg>
               <h3 class="book-title">Portrait</h3>
             </router-link>
           </li>
-          <li class="sketchbook p-2" v-show="isShowAllLink || isShowMotorcycle">
+          <li
+            class="sketchbook p-2"
+            v-show="isShowAllLink || isShowMotorcycle"
+          >
             <router-link
               to="/sketchbooks/motorcycle"
               class="d-inline-block p-3"
@@ -523,8 +536,7 @@
                 fill="currentColor"
                 viewBox="0 0 512 512"
               >
-                <path
-                  d="M 417.30,178.00
+                <path d="M 417.30,178.00
                                     C 413.20,179.70 413.10,186.60 417.30,187.40
                                     418.50,187.60 423.10,188.30 427.40,188.90
                                     431.80,189.50 435.60,190.30 435.90,190.50
@@ -788,22 +800,26 @@
                                     267.20,345.10 267.10,342.30 267.00,303.40
                                     267.00,303.40 267.00,261.60 267.00,261.60
                                     267.00,261.60 269.40,263.90 269.40,263.90
-                                    270.70,265.20 272.80,268.30 273.90,270.90 Z"
-                />
+                                    270.70,265.20 272.80,268.30 273.90,270.90 Z" />
               </svg>
               <h3 class="book-title">Motorcycle</h3>
             </router-link>
           </li>
-          <li class="sketchbook p-2" v-show="isShowAllLink || isShowUrban">
-            <router-link to="/sketchbooks/urban" class="d-inline-block p-3">
+          <li
+            class="sketchbook p-2"
+            v-show="isShowAllLink || isShowUrban"
+          >
+            <router-link
+              to="/sketchbooks/urban"
+              class="d-inline-block p-3"
+            >
               <!-- <img src="../assets/icons/urban.svg" alt=""> -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
                 viewBox="0 0 512 512"
               >
-                <path
-                  d="M 200.60,346.20
+                <path d="M 200.60,346.20
                                     C 198.70,348.80 198.30,365.50 200.10,366.50
                                         200.60,366.90 202.20,366.90 203.60,366.60
                                         206.00,366.00 206.00,365.80 206.00,355.60
@@ -1056,8 +1072,7 @@
                                         407.20,82.20 406.00,80.80 405.10,80.40
                                         404.20,80.00 376.70,79.40 343.90,79.00
                                         311.10,78.60 283.90,78.00 283.40,77.70
-                                        282.90,77.40 281.00,77.80 279.30,78.50 Z"
-                />
+                                        282.90,77.40 281.00,77.80 279.30,78.50 Z" />
               </svg>
               <h3 class="book-title">Urban</h3>
             </router-link>
@@ -1072,7 +1087,7 @@
 <style lang="scss" scoped>
 .headline {
   &::after {
-    content: "";
+    content: '';
     display: block;
     background: #2f2f2f;
     width: 100px;
@@ -1131,9 +1146,7 @@ export default {
   setup() {
     const route = useRoute();
     const isShowAllLink = computed(() => route.path === '/sketchbooks');
-    const isShowOutdoors = computed(
-      () => route.path === '/sketchbooks/outdoors',
-    );
+    const isShowOutdoors = computed(() => route.path === '/sketchbooks/outdoors');
     const isShowCafe = computed(() => route.path === '/sketchbooks/cafe');
     const isShowPortrait = computed(
       () => route.path === '/sketchbooks/portrait',
