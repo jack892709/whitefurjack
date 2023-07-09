@@ -1,0 +1,30 @@
+
+version: "3.1"
+services:
+  service-vue:
+    build: mydocker/service-vue
+    working_dir: /application
+    volumes:
+      - ..:/application
+    ports:
+      - "${FE_DEV_PORT}:${FE_DEV_PORT}"
+    command: >
+      bash -c 'for((i=1;;i+=2)); do sleep 1 && echo "Counter: $$i"; done'
+    profiles:
+      - web-services
+
+  # php-fpm:
+  #   build: phpdocker/php-fpm
+  #   image: hello-world
+  #   working_dir: /application
+  #   environment:
+  #     HISTFILE: /root/hist/.bash_history
+  #   # volumes:
+  #   #   - ..:/application
+  #   #   - './phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/8.0/fpm/conf.d/99-overrides.ini'
+  #   #   - ${SSH_PATH}:/root/.ssh
+  #   ports:
+  #     # - "${FE_DEV_PORT}:${FE_DEV_PORT}"
+  #     - "3000:3000"
+  #   profiles:
+  #     - web-services

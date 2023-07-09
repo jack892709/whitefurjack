@@ -11,10 +11,10 @@ const loadimage = require('./assets/images/loading.gif');
 const errorimage = require('./assets/images/image_not_found.png');
 
 const lazyLoadOptions = {
-    error: errorimage,
-    loading: loadimage,
-    log: false,
-    observerOptions: { rootMargin: '1000px', threshold: 0.1 },
+  error: errorimage,
+  loading: loadimage,
+  log: false,
+  observerOptions: { rootMargin: '1000px', threshold: 0.1 },
 };
 
 // Running

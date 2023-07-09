@@ -32,42 +32,6 @@
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "@vue/airbnb"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {
-      "comma-dangle": [
-        "error",
-        "always-multiline"
-      ],
-      "indent": [
-        "error",
-        4
-      ],
-      "linebreak-style": [
-        "error",
-        "windows"
-      ],
-      "no-cond-assign": [
-        "error",
-        "always"
-      ],
-      "one-var": "off",
-      "init-declarations": "off",
-      "no-console": "off",
-      "no-inline-comments": "off",
-      "max-len": "off"
-    }
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
